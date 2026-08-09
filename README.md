@@ -63,6 +63,19 @@ graph TD
 
 ---
 
+## 🏷️ General-Purpose Extensibility: Supported Categories
+
+CivicFix is engineered as a **flexible, general-purpose civic intelligence grid**. Rather than being locked to a single type of issue, the underlying AI models (FastAPI keyword rules + Gemini + YOLO) dynamically classify, route, and analyze **any type of public hazard or municipal registry item** across key city verticals:
+
+*   **⚡ Electricity & Utilities**: Exposed high-voltage lines, dangling street cables, dark/flickering streetlights, damaged distribution boxes, and faulty traffic signals.
+*   **🛣️ Roads & Mobility**: Potholes, road depressions, missing manhole covers, cracked asphalt, blocked walkways, and damaged safety barriers.
+*   **🚰 Water & Sanitation**: Burst potable water mains, open/overflowing sewage lines, blocked storm drains, and neighborhood flooding.
+*   **🚯 Waste & Environmental**: Garbage pile-ups, overflowing public dumpsters, illegal debris dumping, and toxic environmental hazards.
+*   **⚠️ Safety & Compliance**: Illegal parking blocking pedestrian sidewalks/fire lanes, stray animal hazards, and public property vandalism.
+*   **🎒 Community Registry (Lost & Found)**: A specialized, secure board for reporting, locating, and matching lost wallets, keys, bags, electronics, or pets using dHash visual correlation.
+
+---
+
 ## 🔬 Under the Hood: The AI Engines
 
 ### 1. Multimodal Vision Analyzer (`vision_analyzer.py`)
