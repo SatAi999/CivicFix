@@ -10,6 +10,13 @@
 
 ---
 
+## 🔗 Live Production Links
+*   **Web Client (Vercel)**: [https://civic-fix-mu.vercel.app/](https://civic-fix-mu.vercel.app/)
+*   **API Gateway (Render)**: [https://civicfix-nthd.onrender.com](https://civicfix-nthd.onrender.com/)
+*   **Interactive API documentation**: [https://civicfix-nthd.onrender.com/docs](https://civicfix-nthd.onrender.com/docs)
+
+---
+
 ## 🚨 The Problem: The Municipal Triage Bottleneck & The Human Cost
 
 Civic infrastructure failures are not merely visual inconveniences; they are active, real-world safety hazards. An unmarked pothole on a high-speed road, a dangling exposed electrical cable near a school, or a dark, non-functional streetlight on a pedestrian crossing are lethal hazards. **One verified, timely report of a flickering streetlight or road cavity does not just repair asphalt; it directly prevents a fatal accident and saves a human life.**
