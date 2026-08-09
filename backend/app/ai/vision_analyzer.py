@@ -13,16 +13,18 @@ class VisionAnalyzer(BaseVisionAnalyzer):
         self._load_yolo()
 
     def _load_yolo(self):
-        """Lazy load YOLO model to speed up startup if not used immediately"""
-        if os.path.exists(settings.YOLO_MODEL_PATH):
-            try:
-                from ultralytics import YOLO
-                self.yolo_model = YOLO(settings.YOLO_MODEL_PATH)
-                print(f"YOLO Model loaded successfully from {settings.YOLO_MODEL_PATH}")
-            except Exception as e:
-                print(f"Warning: Failed to load local YOLO model: {e}")
-        else:
-            print(f"Warning: YOLO model not found at {settings.YOLO_MODEL_PATH}")
+        """Lazy load YOLO model, downloading it automatically if the configured path is missing"""
+        try:
+            from ultralytics import YOLO
+            model_path = settings.YOLO_MODEL_PATH
+            if not os.path.exists(model_path):
+                print(f"Configured YOLO path '{model_path}' not found. Loading/downloading standard 'yolo11n.pt'...")
+                model_path = "yolo11n.pt"
+            
+            self.yolo_model = YOLO(model_path)
+            print(f"YOLO Model loaded successfully from {model_path}")
+        except Exception as e:
+            print(f"Warning: Failed to load local YOLO model: {e}")
 
     def analyze_image(self, image_path: str, description_context: str = "") -> Dict[str, Any]:
         """
