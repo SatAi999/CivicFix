@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=supersecretkeyforhackathoncivicfix2026!@#
+      - DATABASE_URL=sqlite:///./data/civicfix.db
+      - YOLO_MODEL_PATH=/app/weights/yolo11n.pt
+    volumes:
+      - backend-data:/app/data
+      - backend-uploads:/app/uploads
+      # Bind local YOLO model weight inside container for local vision
+      - D:/Computer_Vision:/app/weights
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  backend-data:
+  backend-uploads:

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palettes - Ultra Premium Dark Theme */
+  --bg-primary: hsl(222, 47%, 4%);        /* Deep Midnight Blue/Black */
+  --bg-secondary: hsl(222, 40%, 8%);      /* Frosted Sidebar / Card Dark Slate */
+  --bg-tertiary: hsl(222, 35%, 12%);      /* Interactive fields and overlays */
+  --border-color: rgba(255, 255, 255, 0.06); /* Extremely subtle border line */
+  
+  /* Glowing Gradients */
+  --gradient-accent: linear-gradient(135deg, hsl(224, 85%, 58%), hsl(263, 80%, 55%));
+  --gradient-glow: radial-gradient(circle at top, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+  
+  /* Primary Accent & Hover States */
+  --accent-primary: hsl(224, 85%, 58%);    /* Electric Royal Blue */
+  --accent-primary-hover: hsl(224, 95%, 64%);
+  --accent-secondary: hsl(263, 80%, 55%);  /* Neon Purple (AI indicators) */
+  --accent-secondary-hover: hsl(263, 90%, 65%);
+  
+  /* Text System */
+  --text-primary: hsl(0, 0%, 100%);        /* Crisp White */
+  --text-secondary: hsl(215, 20%, 80%);    /* Soft Light Gray */
+  --text-muted: hsl(215, 12%, 55%);        /* Muted Description Gray */
+  
+  /* Civic Priority Theme Colors */
+  --color-low: hsl(142, 72%, 40%);         /* Emerald Green */
+  --color-medium: hsl(45, 93%, 47%);       /* Bright Yellow-Gold */
+  --color-high: hsl(24, 95%, 53%);         /* Safety Orange */
+  --color-critical: hsl(355, 84%, 55%);    /* Ruby Crimson Red */
+  
+  /* Status Colors */
+  --status-reported: hsl(215, 15%, 55%);
+  --status-ai-verified: hsl(263, 75%, 70%);
+  --status-triaged: hsl(199, 89%, 48%);
+  --status-assigned: hsl(35, 90%, 52%);
+  --status-in-progress: hsl(210, 95%, 58%);
+  --status-resolution: hsl(150, 75%, 40%);
+  
+  /* Fonts */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Corner Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows and Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px hsla(224, 85%, 58%, 0.25);
+  --shadow-glow-purple: 0 0 20px hsla(263, 80%, 55%, 0.25);
+  
+  /* Glassmorphism Styles */
+  --glass-bg: rgba(13, 17, 28, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-filter: blur(16px);
+  
+  /* Transitions */
+  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}

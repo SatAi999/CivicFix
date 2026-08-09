@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+pydantic-settings
+python-multipart
+python-dotenv
+pyjwt
+passlib
+cryptography
+numpy
+opencv-python
+ultralytics
+scikit-learn
+requests
