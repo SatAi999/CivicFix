@@ -17,27 +17,26 @@
 
 ---
 
-## 🚨 The Problem: The Municipal Triage Bottleneck & The Human Cost
+## 🚨 The Crisis: Broken Infrastructure & The Human Cost
 
-### The Human Cost: Lethal Hazards
-Civic infrastructure failures are not merely visual inconveniences; they are active, real-world safety hazards. 
-*   **Potholes & Cavities**: An unmarked pothole on a high-speed road forces two-wheeler riders to swerve violently, leading to fatal crashes.
-*   **Exposed Utility Wires**: Dangling live electrical cables near public paths or schools create silent, lethal electrocution traps, especially during monsoons.
-*   **Broken Streetlights**: Dark spots on pedestrian crossings increase vehicular collisions and elevate neighborhood crime rates.
+### 1. The Human Cost: Lethal Hazards in Plain Sight
+Every day, citizens navigate urban spaces littered with neglected hazards. These are not merely structural inconveniences or aesthetic eyesores; they are active threats to human life:
+*   **The Deadly Pothole**: An unmarked, water-filled cavity on a high-speed arterial road is a crash site waiting to happen. For a two-wheeler rider, striking a 10cm-deep road cavity at 50 km/h results in violent loss of control, throwing riders into oncoming traffic. **Thousands of fatal accidents occur annually due to delayed road repairs.**
+*   **Exposed High-Voltage Cables**: During monsoons, waterlogging turns exposed electrical wires dangling from utility poles or sub-stations into invisible electrocution traps. A single wire touching water can turn an entire street block lethal for pedestrians.
+*   **Blacked-Out Intersections**: Non-functioning streetlights on pedestrian crossings create absolute darkness at night, rendering pedestrians invisible to speeding motorists and leading to catastrophic collisions. Additionally, these dark zones become hotspots for street crimes.
 
-**One verified, timely report of a flickering streetlight or road cavity does not just repair asphalt; it directly prevents a fatal accident and saves a human life.**
+**One verified, timely report of a road cavity or exposed cable does not just repair concrete or wiring; it directly prevents a fatal accident and saves a human life.**
 
-### The Administrative Bottleneck
-Despite this gravity, modern municipal administrations are crippled by critical operational bottlenecks:
-
-*   **The Fragmented Reporting Trap**: Citizens flag city issues across disjointed channels—social media, phone calls, and static web forms. These reports are often vague (e.g., *"pothole on Main St"*), lack precise coordinates, and require manual human triage.
-*   **The Duplicate Report Avalanche**: When a high-traffic road develops a pothole, hundreds of citizens report the same issue. Municipal databases get flooded with duplicate tickets, burying other critical reports (like exposed wires or gas leaks) under administrative noise.
-*   **The Inspection and Trust Gap**: City workers waste massive resources conducting field visits to verify issues that are either fake, mislocated, or already resolved. Conversely, citizens feel their reports disappear into a "black hole," degrading public trust in local government.
-*   **The Resolution Loophole**: Contractors frequently mark tickets as "Resolved" without concrete proof, leading to sub-par repairs, recurring issues, and fraudulent invoice closures.
+### 2. The Administrative Crisis: The Triage Bottleneck
+While citizens are surrounded by these hazards, municipal administrations are crippled by structural operational bottlenecks:
+*   **The Noise-to-Signal Disaster**: Citizens post issues across fragmented channels—social media tags, phone calls, and static web portals. These reports are often vague (e.g., *"wire loose near park"*), lack precise GPS coordinates, and are missing images, forcing municipal operators to spend hours manually inspecting locations just to determine the exact hazard.
+*   **The Duplicate Avalanche**: When a major road develops a pothole, hundreds of citizens report it. In traditional systems, this triggers hundreds of separate tickets. The database is flooded with duplicate noise, burying critical, single-report hazards (like gas leaks or exposed wires) under administrative clutter.
+*   **The Inspection and Trust Gap**: City workers waste massive budgets sending field inspectors to verify issues that are either duplicate, mislocated, or already resolved. As a result, tickets take weeks to resolve, causing citizens to lose trust and stop reporting entirely.
+*   **The Contractor Resolution Loophole**: Contractors frequently mark tickets as "Resolved" to clear invoicing queues, providing either no proof or old, recycled photos. Without automated before/after verification, municipalities pay for sub-par or incomplete repairs.
 
 ---
 
-## 💡 The Solution: CivicFix
+## 💡 The Solution: CivicFix Closed-Loop Architecture
 
 CivicFix transforms municipal operations by replacing manual triage with **six integrated AI agents** in an **Evidence-First design**:
 
@@ -54,18 +53,20 @@ graph TD
     I -->|Validates Reconstruct| J[Citizen Closes Case]
 ```
 
-### Key Pillars
-1.  **Evidence-First Submission**: Citizens capture an incident. The system automatically extracts location metadata and categorizes the ticket using computer vision, preventing incorrect manual entry.
-2.  **GIS-Driven Deduplication**: Cross-checks nearby reports before submission to combine duplicates into a single ticket, allowing users to "Support" an existing issue instead of spamming the database.
-3.  **Dynamic Escalation**: Prioritizes issues based on hazard levels, proximity to public schools/hospitals, and community support signals.
-4.  **Closed-Loop Resolution Verification**: Requires contractors to submit visual proof of repairs. The system performs visual comparison audits to confirm work completion before the ticket can be closed.
+### The Closed-Loop Paradigm
+*   **Step 1: Evidence Capture**: Citizen uploads an image and address.
+*   **Step 2: AI Triage & Parsing**: The AI Vision Analyzer classifies the issue, identifies hazards, and determines baseline severity.
+*   **Step 3: Proximity Deduplication**: The system runs spatial and visual correlation checks. If a matching issue exists nearby, the user is redirected to upvote the existing ticket, consolidating resources.
+*   **Step 4: Smart Routing**: The ticket is automatically routed to the correct municipal agency (e.g., Water Board, Road Authority) based on category rules.
+*   **Step 5: Visual Proof of Resolution**: The contractor uploads an "After" photo. The AI Before/After Comparator validates that the structural defect was resolved before marking the ticket as ready for closure.
+*   **Step 6: Citizen Verification**: The citizen inspects the repair using a before/after slider and marks the ticket closed, completing the loop.
 
 ---
 
-## 🔬 Under the Hood: The Core AI Modules
+## 🔬 Under the Hood: The AI Engines
 
 ### 1. Multimodal Vision Analyzer (`vision_analyzer.py`)
-Processes user uploads to extract structured civic data:
+Processes uploads to extract structured civic data:
 *   **API Model (Gemini 2.5 Flash)**: Sends images and user-entered descriptions to classify the issue into categories (e.g., *Exposed Wire*, *Pothole*, *Water Leakage*, *Lost and Found*), identifying hazards and severity.
 *   **Local YOLO Fallback (`yolo11n.pt`)**: If the API is offline or keyless, the system automatically downloads the `yolo11n.pt` weights and loads the model locally using `ultralytics`. It detects physical objects (such as traffic signs, poles, vehicles, animals, bags) and couples it with a regex keyword matcher to classify the ticket.
 
@@ -104,7 +105,7 @@ Determines the urgency score $S \in [0.0, 1.0]$:
 
 ---
 
-## 📡 REST API Reference
+## 📡 REST API Reference & JSON Payload Examples
 
 | Endpoint | Method | Auth | Description |
 | :--- | :--- | :--- | :--- |
@@ -121,6 +122,74 @@ Determines the urgency score $S \in [0.0, 1.0]$:
 | `/api/analytics/dashboard` | `GET` | Public | Retrieve system-wide statistics (trends, categories, priorities). |
 | `/api/analytics/hotspots` | `GET` | Public | Run DBSCAN spatial clustering to retrieve city hotspots. |
 | `/api/assistant` | `POST` | Bearer | Query conversational chatbot with geolocation context. |
+
+### API Payload Example: `/api/issues/check-duplicates`
+*   **Request Type**: `multipart/form-data`
+*   **Parameters**:
+    *   `description`: `"Found a red Michael Kors purse with a gold MK logo and chain strap on a bench."`
+    *   `latitude`: `12.9801`
+    *   `longitude`: `77.6010`
+    *   `file`: `[red_purse.jpg image binary]`
+*   **JSON Response (`200 OK`)**:
+    ```json
+    {
+      "is_duplicate": true,
+      "suggestions": [
+        {
+          "primary_issue_id": "CIV-LOST-MK",
+          "title": "Lost Red Michael Kors Purse",
+          "distance_meters": 0.0,
+          "similarity_score": 0.75,
+          "status": "REPORTED",
+          "category_match": false,
+          "media_url": "/api/issues/media/6"
+        }
+      ]
+    }
+    ```
+
+---
+
+## 💾 Database Schema
+
+The SQLite database (`civicfix.db`) is structured to preserve transaction history and maintain audit logs:
+
+### 1. `users` Table
+*   `id` (INTEGER, Primary Key): Unique user ID.
+*   `username` (VARCHAR, Unique): Login name.
+*   `email` (VARCHAR, Unique): Login email.
+*   `password_hash` (VARCHAR): Secure password representation.
+*   `role_id` (INTEGER, Foreign Key $\to$ `roles.id`).
+
+### 2. `issues` Table
+*   `id` (VARCHAR, Primary Key): Unique alphanumeric ticket ID (e.g., `CIV-28491`).
+*   `title` (VARCHAR): User-provided or AI-generated title.
+*   `description` (TEXT): Detailed description of the issue.
+*   `category_id` (INTEGER, Foreign Key $\to$ `issue_categories.id`).
+*   `reporter_id` (INTEGER, Foreign Key $\to$ `users.id`).
+*   `status` (VARCHAR): Current lifecycle state (`REPORTED`, `ASSIGNED`, `IN_PROGRESS`, `RESOLUTION_SUBMITTED`, `RESOLVED`, `CLOSED`).
+*   `severity` (VARCHAR): Priority tier (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`).
+*   `created_at` (TIMESTAMP) & `updated_at` (TIMESTAMP).
+
+### 3. `issue_locations` Table
+*   `issue_id` (VARCHAR, Foreign Key $\to$ `issues.id`, Primary Key).
+*   `latitude` (FLOAT) & `longitude` (FLOAT).
+*   `address` (VARCHAR): Street address.
+*   `ward` (VARCHAR): Municipal ward zone.
+
+### 4. `issue_media` Table
+*   `id` (INTEGER, Primary Key).
+*   `issue_id` (VARCHAR, Foreign Key $\to$ `issues.id`).
+*   `media_path` (VARCHAR): Relative URL to the file.
+*   `is_resolution` (BOOLEAN): `0` for before/evidence photo, `1` for after/resolution photo.
+
+### 5. `issue_status_history` Table (Audit Log)
+*   `id` (INTEGER, Primary Key).
+*   `issue_id` (VARCHAR, Foreign Key $\to$ `issues.id`).
+*   `status` (VARCHAR): Status changed to.
+*   `notes` (TEXT): Audit trail notes.
+*   `changed_by_id` (INTEGER, Foreign Key $\to$ `users.id`).
+*   `created_at` (TIMESTAMP).
 
 ---
 
